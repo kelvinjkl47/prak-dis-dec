@@ -42,29 +42,29 @@ Praktik pertama dilakukan dengan mengamati proses yang berjalan melalui Task Man
 
 **Task Manager Windows**
 
-![Task Manager Windows](images/task-manager.png)
+![Task Manager Windows](task-manager.png)
 
 **Menampilkan daftar proses dengan tasklist**
 
-![Daftar proses Windows](images/tasklist.png)
+![Daftar proses Windows](tasklist.png)
 
 **Mencari proses Chrome**
 
-![Mencari proses Chrome](images/findstr-chrome..png)
+![Mencari proses Chrome](findstr-chrome..png)
 
 **Mencari proses Notepad**
 
-![Mencari proses Notepad](images/findstr-notepad.png)
+![Mencari proses Notepad](findstr-notepad.png)
 
 **Menghentikan proses Notepad**
 
-![Menghentikan proses Notepad](images/taskkill-notepad.png)
+![Menghentikan proses Notepad](taskkill-notepad.png)
 
 **Menjalankan kembali Notepad**
 
-![Perintah menjalankan Notepad](images/start-notepad.png)
+![Perintah menjalankan Notepad](start-notepad.png)
 
-![Notepad terbuka kembali](images/notepad-open.png)
+![Notepad terbuka kembali](notepad-open.png)
 
 ### 3.2 Persiapan Lingkungan Python
 
@@ -72,7 +72,7 @@ Lingkungan Python diperiksa menggunakan perintah `python --version` dan `uv --ve
 
 **Pemeriksaan versi Python, uv, dan daftar paket**
 
-![Versi uv dan daftar paket Python](images/python-packages.png)
+![Versi uv dan daftar paket Python](python-packages.png)
 
 ### 3.3 Pembuatan dan Pengujian Server GraphQL
 
@@ -82,11 +82,11 @@ Server berhasil dijalankan pada port 8001. Pengujian dilakukan melalui browser d
 
 **Server GraphQL berjalan**
 
-![GraphQL Server berjalan](images/graphql-server.png)
+![GraphQL Server berjalan](graphql-server.png)
 
 **Pengujian query melalui GraphiQL**
 
-![Hasil query GraphQL](images/graphql-query.png)
+![Hasil query GraphQL](graphql-query.png)
 
 ### 3.4 Pembuatan dan Pengujian Client GraphQL
 
@@ -94,7 +94,7 @@ Client Python digunakan untuk mengirim query ke server GraphQL melalui alamat `h
 
 **Hasil menjalankan client Python**
 
-![Hasil client GraphQL](images/graphql-client.png)
+![Hasil client GraphQL](graphql-client.png)
 
 ## 4. Hasil dan Pembahasan
 
