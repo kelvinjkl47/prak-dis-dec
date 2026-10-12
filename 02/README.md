@@ -13,17 +13,19 @@ Praktikum Minggu 02 — Komunikasi Antarproses pada Sistem Terdistribusi
 
 2. Dasar Teori
 
-2.1 Manajemen Proses Windows
+2.1 Proses
 
-Proses adalah program yang sedang dijalankan oleh sistem operasi. Setiap aplikasi yang dibuka dapat menghasilkan proses yang dikelola oleh Windows. Proses dapat diamati melalui Task Manager maupun Command Prompt. Beberapa perintah yang digunakan untuk mengelola proses adalah `tasklist`, `findstr`, `taskkill`, dan `start`.
+Proses merupakan hasil dari eksekusi program atau aplikasi yang dapat dijalankan oleh sistem operasi. Proses terdiri atas kode program, data, sumber daya, serta informasi mengenai keadaan proses. Setiap aplikasi yang dijalankan akan dikelola oleh sistem operasi agar dapat berjalan dengan baik.
 
-2.2 Komunikasi Client-Server dengan GraphQL
+2.2 Proses pada Satu Node
 
-GraphQL adalah teknologi untuk meminta data dari server menggunakan query. Dalam model client-server, client mengirim permintaan, kemudian server memprosesnya dan mengembalikan data yang diminta. Pada praktikum ini, server dibuat menggunakan Python dengan pustaka Strawberry, sedangkan client Python digunakan untuk mengirim query dan menerima data buku.
+Pada satu node, sistem operasi bertanggung jawab mengelola seluruh proses, mulai dari menjalankan program, mengalokasikan sumber daya, hingga mengatur keadaan proses. Pengelolaan tersebut berlangsung di latar belakang sehingga pengguna dapat menjalankan aplikasi tanpa harus mengatur proses secara langsung. Proses juga dapat berkomunikasi melalui mekanisme yang disediakan oleh sistem operasi.
 
-2.3 Lingkungan Python dan uv
+2.3 Komunikasi Antarproses pada Sistem Terdistribusi
 
-Python merupakan bahasa pemrograman yang digunakan dalam pembuatan server dan client pada praktikum ini. `uv` digunakan untuk mengelola lingkungan dan paket Python. Paket yang dibutuhkan, seperti Strawberry GraphQL dan dependensinya, harus tersedia agar server dan client dapat dijalankan.
+Dalam sistem terdistribusi, proses dapat berjalan pada node yang berbeda. Setiap node memiliki memori dan pengelolaan sistemnya sendiri, sehingga komunikasi tidak dapat dilakukan dengan menggunakan shared memory secara langsung seperti pada satu node. Oleh karena itu, diperlukan mekanisme komunikasi antarproses melalui jaringan.
+
+Salah satu mekanisme yang dapat digunakan adalah GraphQL. GraphQL memungkinkan client meminta data kepada server menggunakan query. Pada praktikum ini, server dibuat menggunakan Python dan pustaka Strawberry, sedangkan client digunakan untuk mengirim permintaan dan menerima data dari server.
 
 3. Implementasi
 
