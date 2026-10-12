@@ -72,7 +72,7 @@ Lingkungan Python diperiksa menggunakan perintah `python --version` dan `uv --ve
 
 **Pemeriksaan versi Python, uv, dan daftar paket**
 
-![Versi uv dan daftar paket Python](python-packages.png)
+![Versi uv dan daftar paket Python](images/python-packages.png)
 
 ### 3.3 Pembuatan dan Pengujian Server GraphQL
 
@@ -82,11 +82,11 @@ Server berhasil dijalankan pada port 8001. Pengujian dilakukan melalui browser d
 
 **Server GraphQL berjalan**
 
-![GraphQL Server berjalan](graphql-server.png)
+![GraphQL Server berjalan](images/graphql-server.png)
 
 **Pengujian query melalui GraphiQL**
 
-![Hasil query GraphQL](graphql-query.png)
+![Hasil query GraphQL](images/graphql-query.png)
 
 ### 3.4 Pembuatan dan Pengujian Client GraphQL
 
@@ -94,7 +94,7 @@ Client Python digunakan untuk mengirim query ke server GraphQL melalui alamat `h
 
 **Hasil menjalankan client Python**
 
-![Hasil client GraphQL](graphql-client.png)
+![Hasil client GraphQL](images/graphql-client.png)
 
 ## 4. Hasil dan Pembahasan
 
