@@ -50,6 +50,7 @@ Client dibuat menggunakan Python dan pustaka `requests`. Client mengirimkan perm
 **Dokumentasi:**
 
 Tambahkan kode `client.py` dan screenshot hasil menjalankan client.
+
 4. Hasil dan Pembahasan
 
 4.1 Manajemen Proses Windows
