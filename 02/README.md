@@ -1,74 +1,113 @@
-Modul 02 — Komunikasi Antarproses pada Sistem Terdistribusi
+Praktikum Minggu 02 — Komunikasi Antarproses pada Sistem Terdistribusi
+
+**Mata Kuliah:** Praktikum Sistem Terdistribusi dan Terdesentralisasi  
+**Topik:** Komunikasi Antarproses pada Sistem Terdistribusi
 
 1. Tujuan Praktikum
 
-1. Memahami cara mengelola proses yang berjalan pada sistem operasi Windows.
-2. Memahami penggunaan perintah Command Prompt untuk melihat, mencari, menghentikan, dan menjalankan proses.
-3. Memahami komunikasi antara client dan server menggunakan GraphQL.
-4. Mempraktikkan pengambilan data dari server GraphQL menggunakan Python.
+1. Memahami proses yang berjalan pada sistem operasi Windows.
+2. Mempraktikkan perintah Command Prompt untuk melihat, mencari, menghentikan, dan menjalankan kembali proses.
+3. Memahami komunikasi client-server menggunakan GraphQL.
+4. Membuat dan menjalankan server GraphQL menggunakan Python dan Strawberry.
+5. Menguji client Python untuk mengambil data dari server GraphQL.
 
 2. Dasar Teori
 
 2.1 Manajemen Proses Windows
 
-Proses merupakan program yang sedang dijalankan oleh sistem operasi. Windows menyediakan Task Manager untuk melihat aplikasi dan proses yang berjalan. Selain itu, Command Prompt menyediakan perintah seperti `tasklist` untuk menampilkan proses, `findstr` untuk mencari teks tertentu, `taskkill` untuk menghentikan proses, dan `start` untuk menjalankan aplikasi.
+Proses adalah program yang sedang dijalankan oleh sistem operasi. Setiap aplikasi yang dibuka dapat menghasilkan proses yang dikelola oleh Windows. Proses dapat diamati melalui Task Manager maupun Command Prompt. Beberapa perintah yang digunakan untuk mengelola proses adalah `tasklist`, `findstr`, `taskkill`, dan `start`.
 
 2.2 Komunikasi Client-Server dengan GraphQL
 
-GraphQL merupakan teknologi untuk meminta dan mengambil data dari server menggunakan query. Dalam model client-server, client mengirimkan permintaan kepada server, kemudian server memproses permintaan dan mengembalikan data yang diminta. Pada praktikum ini, Python digunakan untuk membuat client, sedangkan Strawberry digunakan untuk menyediakan server GraphQL.
+GraphQL adalah teknologi untuk meminta data dari server menggunakan query. Dalam model client-server, client mengirim permintaan, kemudian server memprosesnya dan mengembalikan data yang diminta. Pada praktikum ini, server dibuat menggunakan Python dengan pustaka Strawberry, sedangkan client Python digunakan untuk mengirim query dan menerima data buku.
+
+2.3 Lingkungan Python dan uv
+
+Python merupakan bahasa pemrograman yang digunakan dalam pembuatan server dan client pada praktikum ini. `uv` digunakan untuk mengelola lingkungan dan paket Python. Paket yang dibutuhkan, seperti Strawberry GraphQL dan dependensinya, harus tersedia agar server dan client dapat dijalankan.
 
 3. Implementasi
 
 3.1 Manajemen Proses Windows
 
-Pada bagian ini dilakukan pengamatan proses melalui Task Manager dan Command Prompt. Perintah yang dipelajari meliputi `tasklist`, `findstr`, `taskkill`, dan `start`.
+Praktik pertama dilakukan dengan mengamati proses yang berjalan melalui Task Manager dan Command Prompt. Perintah `tasklist` digunakan untuk menampilkan daftar proses, sedangkan `findstr` digunakan untuk mencari proses tertentu. Selanjutnya, `taskkill` digunakan untuk menghentikan proses Notepad dan `start notepad` digunakan untuk menjalankan kembali aplikasi tersebut.
 
-**Dokumentasi:**
+**Task Manager Windows**
 
-Tambahkan screenshot Task Manager dan hasil praktik perintah Command Prompt di bagian ini.
+![Task Manager Windows](task-manager.png)
+
+**Menampilkan daftar proses dengan tasklist**
+
+![Daftar proses Windows](tasklist.png)
+
+**Mencari proses Chrome**
+
+![Mencari proses Chrome](findstr-chrome..png)
+
+**Mencari proses Notepad**
+
+![Mencari proses Notepad](findstr-notepad.png)
+
+**Menghentikan proses Notepad**
+
+![Menghentikan proses Notepad](taskkill-notepad.png)
+
+**Menjalankan kembali Notepad**
+
+![Perintah menjalankan Notepad](start-notepad.png)
+
+![Notepad terbuka kembali](notepad-open.png)
 
 3.2 Persiapan Lingkungan Python
 
-Lingkungan Python disiapkan menggunakan `uv` dan virtual environment. Selanjutnya, dilakukan pemeriksaan versi Python serta pemasangan paket yang diperlukan untuk menjalankan server dan client GraphQL.
+Lingkungan Python diperiksa menggunakan perintah `python --version` dan `uv --version`. Hasil pemeriksaan menunjukkan Python versi 3.14.0 dan uv versi 0.12.23. Perintah `uv pip list` digunakan untuk melihat paket yang tersedia pada lingkungan proyek.
 
-**Dokumentasi:**
+**Dokumentasi pemeriksaan Python dan paket**
 
-Tambahkan screenshot persiapan lingkungan Python dan pemasangan paket setelah praktik selesai.
+![Versi uv dan daftar paket Python](python-packages.png)
 
-3.3 Pembuatan Server GraphQL
+3.3 Pembuatan dan Pengujian Server GraphQL
 
-Server GraphQL dibuat menggunakan Strawberry untuk menyediakan data buku. Server kemudian dijalankan agar client dapat mengirimkan query dan menerima data dari server.
+Server GraphQL dibuat menggunakan Strawberry untuk menyediakan data buku. Data yang disediakan terdiri dari tiga buku, yaitu Laskar Pelangi karya Andrea Hirata, Bumi karya Tere Liye, dan Negeri 5 Menara karya Ahmad Fuadi.
 
-**Dokumentasi:**
+Server berhasil dijalankan pada port 8001. Pengujian dilakukan melalui browser dengan membuka GraphiQL dan menjalankan query untuk meminta judul serta penulis buku.
 
-Tambahkan kode server dan screenshot GraphQL Playground setelah pengujian berhasil.
+**Server GraphQL berjalan**
 
-3.4 Pembuatan Client GraphQL
+![GraphQL Server berjalan](graphql-server.png)
 
-Client dibuat menggunakan Python dan pustaka `requests`. Client mengirimkan permintaan GraphQL ke alamat server, menerima respons, dan menampilkan data buku yang dikembalikan server.
+**Pengujian query melalui GraphiQL**
 
-**Dokumentasi:**
+![Hasil query GraphQL](graphql-query.png)
 
-Tambahkan kode `client.py` dan screenshot hasil menjalankan client.
+3.4 Pembuatan dan Pengujian Client GraphQL
+
+Client Python digunakan untuk mengirim query ke server GraphQL melalui alamat `http://localhost:8001/graphql`. Setelah permintaan dikirim, server mengembalikan data buku dalam format JSON. Hasil pengujian menunjukkan bahwa client berhasil menerima data dari server.
+
+**Hasil menjalankan client Python**
+
+![Hasil client GraphQL](graphql-client.png)
 
 4. Hasil dan Pembahasan
 
 4.1 Manajemen Proses Windows
 
-Praktik ini digunakan untuk memahami cara memantau dan mengelola proses yang sedang berjalan di Windows. Task Manager dan Command Prompt membantu pengguna melihat, mencari, menghentikan, serta menjalankan proses aplikasi.
+Berdasarkan praktik yang dilakukan, Task Manager dapat digunakan untuk melihat proses yang sedang berjalan pada Windows. Perintah `tasklist` menampilkan daftar proses dalam bentuk teks, sedangkan `findstr` membantu mencari proses berdasarkan nama. Pada praktik ini, proses Notepad berhasil dihentikan menggunakan `taskkill` dan dijalankan kembali menggunakan `start notepad`. Dengan demikian, praktik ini membantu memahami cara sistem operasi mengelola proses aplikasi.
 
-4.2 Komunikasi Client-Server dengan GraphQL
+4.2 Persiapan Lingkungan Python
 
-Pengujian GraphQL dilakukan dengan menjalankan server dan mengirimkan query dari client. Jika server berjalan dengan benar, client akan menerima respons berisi data buku yang diminta. Hasil akhir akan didokumentasikan menggunakan screenshot pengujian.
+Pemeriksaan lingkungan menunjukkan bahwa Python versi 3.14.0 dan uv versi 0.12.23 tersedia. Perintah `uv pip list` menampilkan berbagai paket yang diperlukan, termasuk Strawberry GraphQL dan dependensinya. Pemeriksaan ini membantu memastikan lingkungan yang digunakan sudah memiliki paket untuk menjalankan praktik GraphQL.
+
+4.3 Komunikasi Client-Server dengan GraphQL
+
+Server GraphQL berhasil dijalankan pada port 8001 dan dapat diuji melalui GraphiQL di browser. Query yang meminta field `books`, `title`, dan `author` berhasil menghasilkan tiga data buku. Client Python juga berhasil menerima respons JSON dari server. Hasil ini menunjukkan bahwa client dapat mengirim permintaan dan server dapat mengembalikan data sesuai query yang diberikan.
 
 5. Kesimpulan
 
-Praktikum ini membahas manajemen proses pada Windows serta komunikasi client-server menggunakan GraphQL. Melalui kegiatan ini, mahasiswa mempelajari perintah untuk mengelola proses, menyiapkan lingkungan Python, menjalankan server GraphQL, dan mengambil data melalui client.
+Praktikum Modul 02 memberikan pemahaman mengenai manajemen proses Windows dan komunikasi client-server menggunakan GraphQL. Perintah Command Prompt dapat digunakan untuk melihat, mencari, menghentikan, dan menjalankan kembali proses aplikasi. Selain itu, lingkungan Python berhasil digunakan untuk menjalankan server GraphQL dan client. Pengujian menunjukkan bahwa client berhasil memperoleh tiga data buku dari server, sehingga komunikasi antara keduanya berjalan sesuai harapan.
 
-6. Referensi
+ 6. Referensi
 
-1. Dokumentasi Python: https://docs.python.org/3/
-2. Dokumentasi Strawberry GraphQL: https://strawberry.rocks/
-3. Dokumentasi uv: https://docs.astral.sh/uv/
-4. Dokumentasi GraphQL: https://graphql.org/
-
+1. Dokumentasi Python. https://docs.python.org/3/
+2. Dokumentasi Strawberry GraphQL. https://strawberry.rocks/
+3. Dokumentasi uv. https://docs.astral.sh/uv/
+4. Dokumentasi GraphQL. https://graphql.org/
