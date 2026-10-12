@@ -42,29 +42,29 @@ Praktik pertama dilakukan dengan mengamati proses yang berjalan melalui Task Man
 
 **Task Manager Windows**
 
-![Task Manager Windows](task-manager.png)
+![Task Manager Windows](images/task-manager.png)
 
 **Menampilkan daftar proses dengan tasklist**
 
-![Daftar proses Windows](tasklist.png)
+![Daftar proses Windows](images/tasklist.png)
 
 **Mencari proses Chrome**
 
-![Mencari proses Chrome](findstr-chrome..png)
+![Mencari proses Chrome](images/findstr-chrome..png)
 
 **Mencari proses Notepad**
 
-![Mencari proses Notepad](findstr-notepad.png)
+![Mencari proses Notepad](images/findstr-notepad.png)
 
 **Menghentikan proses Notepad**
 
-![Menghentikan proses Notepad](taskkill-notepad.png)
+![Menghentikan proses Notepad](images/taskkill-notepad.png)
 
 **Menjalankan kembali Notepad**
 
-![Perintah menjalankan Notepad](start-notepad.png)
+![Perintah menjalankan Notepad](images/start-notepad.png)
 
-![Notepad terbuka kembali](notepad-open.png)
+![Notepad terbuka kembali](images/notepad-open.png)
 
 ### 3.2 Persiapan Lingkungan Python
 
