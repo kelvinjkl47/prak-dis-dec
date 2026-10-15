@@ -55,12 +55,11 @@ Praktikum sinkronisasi waktu dilakukan menggunakan aplikasi NetTime pada Windows
 ## Hasil Pengujian
 
 Berdasarkan hasil pengujian, aplikasi NetTime menampilkan status *Time is synchronized*. Server yang digunakan adalah `0.nettime.pool.ntp.org`. Nilai offset yang ditampilkan sebesar -7 ms dan lag sebesar 33 ms. Status server menunjukkan *Good* dan tidak terdapat kesalahan pada proses sinkronisasi.
+![Hasil Sinkronisasi Waktu](images/01-sinkronisasi-waktu.png)
 
 ## Pembahasan
 
 Hasil tersebut menunjukkan bahwa NetTime berhasil melakukan sinkronisasi dengan server waktu yang digunakan. Nilai offset menunjukkan selisih waktu yang tercatat oleh aplikasi, sedangkan lag menunjukkan waktu komunikasi yang dilaporkan aplikasi. Sinkronisasi waktu membantu sistem memiliki acuan waktu yang lebih konsisten, terutama ketika beberapa komputer atau proses perlu mencatat kejadian berdasarkan waktu.
-
-![Hasil Sinkronisasi Waktu](images/01-sinkronisasi-waktu.png)
 
 ## 3.2 Vector Clock
 
