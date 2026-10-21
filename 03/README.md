@@ -29,6 +29,9 @@ Tujuan praktikum ini adalah:
 │   ├── 02-kode-vector-clock-2.png
 │   ├── 02-kode-vector-clock-3.png
 │   ├── 03-hasil-vector-clock.png
+│   ├── 03b-kode-modul-vector-clock.png
+│   ├── contoh_vector_clock.py.png
+│   ├── hasil-modul-vector-clock.png
 │   ├── 04-kode-multithreaded.png
 │   ├── 05-hasil-multithreaded.png
 │   ├── 06-kode-race-condition.png
@@ -36,6 +39,7 @@ Tujuan praktikum ini adalah:
 │   ├── 08-kode-race-condition-02.png
 │   ├── 09-hasil-race-condition-02.png
 │   ├── 10-kode-deadlock-01.png
+│   ├── 11-hasil-deadlock-01.png
 │   ├── 12-kode-deadlock-02-1.png
 │   ├── 13-kode-deadlock-02-2.png
 │   ├── 14-hasil-deadlock-02.png
@@ -217,6 +221,12 @@ A concurrent dengan B: False
 
 Sebelum ada pesan, kedua proses concurrent karena vektornya [1,0] dan [0,1] tidak saling mendahului. Setelah P0 mengirim pesan, P1 menggabungkan vektor kiriman ([2,0]) dengan vektornya sendiri lalu menambah slot-nya, sehingga menjadi [2,2]. Sejak itu P0 mendahului P1.
 
+![Kode Modul Vector Clock](images/03b-kode-modul-vector-clock.png)
+
+![Kode Contoh Pemakaian Modul Vector Clock](images/contoh_vector_clock.py.png)
+
+![Hasil Modul Vector Clock](images/hasil-modul-vector-clock.png)
+
 ### 3.3 Problem Without Synchronization
 
 #### A. Multithreading
@@ -273,6 +283,8 @@ Deadlock ini terjadi karena empat kondisi terpenuhi sekaligus: *mutual exclusion
 Pada program `deadlock-02.py`, lock dilepaskan sebelum thread mencoba mengambil lock berikutnya. Program juga menggunakan batas waktu saat mengambil lock (`timeout=5`). Hasil pengujian menunjukkan bahwa kedua thread dapat memperoleh lock secara bergantian dan program menampilkan `Execution Finished`. Deadlock tidak terjadi karena tidak ada thread yang memegang satu lock sambil menunggu lock lainnya (tidak ada *hold and wait* maupun *circular wait*), dan batas waktu mencegah thread menunggu selamanya.
 
 ![Kode Deadlock](images/10-kode-deadlock-01.png)
+
+![Hasil Deadlock](images/11-hasil-deadlock-01.png)
 
 ![Kode Deadlock yang Diperbaiki Bagian 1](images/12-kode-deadlock-02-1.png)
 
