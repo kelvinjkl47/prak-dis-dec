@@ -56,60 +56,61 @@ Tujuan praktikum ini adalah:
 │   ├── gambar-race-condition.jpg
 │   ├── gambar-deadlock.jpg
 │   └── gambar-raft.jpg
-├── vclocks.py
-├── vector_clock.py
-├── contoh_vector_clock.py
-├── multithreaded-example.py
-├── race-conditions-01.py
-├── race-conditions-02.py
-├── deadlock-01.py
-├── deadlock-02.py
-├── raft.py
-├── raft_module.py
-└── raft_simulation.py
+└── workspace-01/
+    ├── vclocks.py
+    ├── vector_clock.py
+    ├── contoh_vector_clock.py
+    ├── multithreaded-example.py
+    ├── race-conditions-01.py
+    ├── race-conditions-02.py
+    ├── deadlock-01.py
+    ├── deadlock-02.py
+    ├── raft.py
+    ├── raft_module.py
+    └── raft_simulation.py
 ```
 
 ## 2. Dasar Teori
 
-## 2.1 Sinkronisasi Waktu
+### 2.1 Sinkronisasi Waktu
 
 Pada sistem terdistribusi, beberapa komputer atau proses dapat berjalan secara bersamaan dan berkomunikasi melalui jaringan. Setiap komputer memiliki jam masing-masing sehingga waktu yang ditampilkan tidak selalu sama. Sinkronisasi waktu diperlukan agar waktu antarperangkat lebih mendekati satu sama lain. Salah satu cara yang digunakan adalah Network Time Protocol (NTP), yaitu protokol untuk menyinkronkan waktu komputer dengan server waktu.
 
-## 2.2 Vector Clock
+### 2.2 Vector Clock
 
 Vector Clock merupakan metode untuk mencatat urutan kejadian pada sistem terdistribusi. Setiap proses memiliki vector yang berisi penghitung kejadian dari proses-proses yang terlibat. Nilainya bertambah ketika proses melakukan kejadian lokal dan diperbarui ketika menerima pesan dari proses lain. Vector Clock membantu menentukan apakah suatu kejadian terjadi sebelum kejadian lain (*happens-before*) atau apakah kedua kejadian tidak memiliki hubungan urutan yang dapat ditentukan.
 
-## 2.3 Multithreading
+### 2.3 Multithreading
 
 Multithreading adalah teknik menjalankan beberapa thread dalam satu proses program. Thread dapat bekerja secara bersamaan sehingga program dapat menangani beberapa tugas tanpa harus menunggu satu tugas selesai terlebih dahulu. Namun, urutan eksekusi thread dapat berubah pada setiap program dijalankan karena penjadwalan sistem operasi.
 
-## 2.4 Race Condition
+### 2.4 Race Condition
 
 Race condition terjadi ketika beberapa thread mengakses atau mengubah data bersama pada waktu yang berdekatan sehingga hasilnya bergantung pada urutan eksekusi. Contohnya adalah dua thread yang memeriksa saldo sebelum mengurangi saldo tersebut. Jika tidak ada pengamanan, keduanya dapat mengambil keputusan berdasarkan nilai saldo yang sama dan menyebabkan hasil yang tidak sesuai. Salah satu cara mengatasinya adalah menggunakan lock agar bagian program yang mengakses data bersama dijalankan secara bergantian.
 
-## 2.5 Deadlock
+### 2.5 Deadlock
 
 Deadlock adalah kondisi ketika dua atau lebih thread saling menunggu sumber daya yang sedang dipegang oleh thread lain. Akibatnya, thread tidak dapat melanjutkan pekerjaannya. Deadlock dapat terjadi ketika beberapa lock diambil dalam urutan yang berbeda. Pengaturan urutan pengambilan lock dan pelepasan lock secara tepat dapat membantu menghindari kondisi tersebut.
 
-## 2.6 Algoritma Raft
+### 2.6 Algoritma Raft
 
 Raft merupakan algoritma konsensus yang digunakan untuk membantu beberapa node mencapai kesepakatan mengenai keadaan sistem. Dalam Raft, node dapat berstatus *follower*, *candidate*, atau *leader*. Leader bertugas menerima perintah dan mengoordinasikan pekerjaan dengan node lain. Jika follower tidak menerima heartbeat dalam waktu tertentu, node dapat memulai proses pemilihan leader. Praktikum ini menggunakan simulasi sederhana untuk mengamati perubahan status node, term, dan panjang log.
 
 ## 3. Implementasi dan Hasil Pengujian
 
-## 3.1 Sinkronisasi Waktu
+### 3.1 Sinkronisasi Waktu
 
-## Implementasi
+#### Implementasi
 
 Praktikum sinkronisasi waktu dilakukan menggunakan aplikasi NetTime pada Windows. Aplikasi dihubungkan dengan server NTP untuk menyinkronkan waktu komputer.
 
-## Hasil Pengujian
+#### Hasil Pengujian
 
 Berdasarkan hasil pengujian, aplikasi NetTime menampilkan status *Time is synchronized*. Server yang digunakan adalah `0.nettime.pool.ntp.org`. Nilai offset yang ditampilkan sebesar -7 ms dan lag sebesar 33 ms. Status server menunjukkan *Good* dan tidak terdapat kesalahan pada proses sinkronisasi.
 
 ![Hasil Sinkronisasi Waktu](images/01-sinkronisasi-waktu.png)
 
-## Pembahasan
+#### Pembahasan
 
 Hasil tersebut menunjukkan bahwa NetTime berhasil melakukan sinkronisasi dengan server waktu yang digunakan. Sinkronisasi waktu membantu sistem memiliki acuan waktu yang lebih konsisten, terutama ketika beberapa komputer atau proses perlu mencatat kejadian berdasarkan waktu.
 
@@ -125,13 +126,13 @@ Proses sinkronisasi pada NTP berjalan sebagai berikut:
 
 Pada percobaan ini, offset sebesar -7 ms menunjukkan jam laptop hanya selisih sangat kecil dari server, dan lag sebesar 33 ms menunjukkan waktu komunikasi dengan server yang dilaporkan aplikasi.
 
-## 3.2 Vector Clock
+### 3.2 Vector Clock
 
-## Implementasi
+#### Implementasi
 
 Program `vclocks.py` dijalankan menggunakan Python. Program melibatkan tiga proses, yaitu P0, P1, dan P2. Setiap proses memiliki Vector Clock yang diperbarui ketika terjadi aktivitas lokal dan pertukaran pesan. Program juga memeriksa hubungan *happens-before* dan konkurensi antara vector yang dihasilkan.
 
-## Hasil Pengujian
+#### Hasil Pengujian
 
 Program berhasil dijalankan dan menghasilkan output berikut untuk pemeriksaan hubungan kejadian:
 
@@ -139,7 +140,7 @@ Program berhasil dijalankan dan menghasilkan output berikut untuk pemeriksaan hu
 - `VC1 happens before VC0: False`
 - `VC0 is concurrent with VC2: False`
 
-## Perhitungan Manual
+#### Perhitungan Manual
 
 Aturan Vector Clock yang dipakai:
 
@@ -159,7 +160,7 @@ Aturan Vector Clock yang dipakai:
 
 Hasil perhitungan manual sama dengan keluaran program: P0 = [2,0,0], P1 = [2,2,0], P2 = [2,2,2].
 
-## Pembahasan
+#### Pembahasan
 
 Pada awal program, ketiga proses memiliki nilai clock `[0, 0, 0]`. Nilai tersebut berubah ketika proses melakukan aktivitas lokal dan bertukar pesan.
 
@@ -175,7 +176,7 @@ Pada awal program, ketiga proses memiliki nilai clock `[0, 0, 0]`. Nilai tersebu
 
 ![Hasil Pengujian Vector Clock](images/03-hasil-vector-clock.png)
 
-## Pembuatan Modul Python Vector Clock
+#### Pembuatan Modul Python Vector Clock
 
 Class `VectorClock` dipisahkan ke dalam file `vector_clock.py` tanpa kode simulasi. File `contoh_vector_clock.py` dibuat untuk mengimpor modul tersebut dan menunjukkan cara memakainya dengan dua proses (P0 dan P1).
 
@@ -218,9 +219,9 @@ Sebelum ada pesan, kedua proses concurrent karena vektornya [1,0] dan [0,1] tida
 
 ![Hasil Modul Vector Clock](images/03c-hasil-modul-vector-clock.png)
 
-## 3.3 Problem Without Synchronization
+### 3.3 Problem Without Synchronization
 
-## A. Multithreading
+#### A. Multithreading
 
 Program `multithreaded-example.py` menggunakan lima thread, yaitu A, B, C, D, dan E. Setiap thread menjalankan tugas dengan waktu tunggu lima detik. Program menggunakan `start()` untuk memulai thread dan `join()` untuk menunggu seluruh thread selesai.
 
@@ -232,7 +233,7 @@ Hasil pengujian menunjukkan bahwa urutan thread mulai dan selesai dapat berbeda 
 
 ![Hasil Multithreading Percobaan 2](images/05b-hasil-multithreaded-2.png)
 
-## B. Race Condition
+#### B. Race Condition
 
 Program `race-conditions-01.py` menggunakan saldo awal Rp100 dan menjalankan dua thread yang masing-masing mencoba mengambil Rp80. Pada hasil pengujian, kedua thread berhasil melewati pemeriksaan saldo sebelum perubahan saldo dilakukan. Akibatnya, saldo menjadi Rp20 setelah pengambilan pertama dan kemudian menjadi -Rp60 setelah pengambilan kedua.
 
@@ -261,7 +262,7 @@ Pada program `race-conditions-02.py`, digunakan `threading.Lock()` untuk melindu
 
 ![Hasil Race Condition dengan Lock](images/09-hasil-race-condition-02.png)
 
-## C. Deadlock
+#### C. Deadlock
 
 Pada program `deadlock-01.py`, thread pertama mengambil `lock_a` dan menunggu `lock_b`, sedangkan thread kedua mengambil `lock_b` dan menunggu `lock_a`. Kedua thread akhirnya saling menunggu karena lock yang dibutuhkan masih dipegang oleh thread lain. Kondisi ini menyebabkan program berhenti melanjutkan proses dan menunjukkan terjadinya deadlock. Program harus dihentikan manual dengan `Ctrl+C`.
 
@@ -285,17 +286,17 @@ Pada program `deadlock-02.py`, lock dilepaskan sebelum thread mencoba mengambil 
 
 ![Hasil Deadlock yang Diperbaiki](images/14-hasil-deadlock-02.png)
 
-## 3.4 Raft Consensus
+### 3.4 Raft Consensus
 
-## A. Implementasi Program Raft
+#### A. Implementasi Program Raft
 
 Program `raft.py` dijalankan menggunakan Python untuk mengamati proses pemilihan leader pada beberapa node. Program menampilkan status node, term, dan panjang log selama simulasi. Status node dapat berubah ketika terjadi proses pemilihan leader atau ketika node menerima heartbeat dari leader.
 
-## B. Hasil Pengujian Program Raft
+#### B. Hasil Pengujian Program Raft
 
 Berdasarkan hasil pengujian program awal, Node 2 terpilih sebagai leader pada salah satu tahap simulasi, sedangkan node lainnya berstatus follower. Selama simulasi, leader menambahkan perintah ke dalam log secara berkala. Hal tersebut ditunjukkan oleh bertambahnya panjang log pada node leader.
 
-## C. Pembahasan Program Raft
+#### C. Pembahasan Program Raft
 
 Alur pemilihan leader pada simulasi ini:
 
@@ -333,11 +334,11 @@ Hasil pengujian memperlihatkan gambaran dasar proses pemilihan leader dan peruba
 
 ![Hasil Raft Bagian 6](images/hasil-raft-6.png)
 
-## D. Pembuatan Modul Python Raft
+#### D. Pembuatan Modul Python Raft
 
 Pada tahap ini, class `State` dan `RaftNode` dipisahkan ke dalam file `raft_module.py`. Selanjutnya, file `raft_simulation.py` dibuat untuk mengimpor modul tersebut dan menjalankan simulasi selama 20 langkah. Pemisahan ini membuat kode class dan kode simulasi berada pada file yang berbeda sehingga lebih mudah dibaca dan digunakan kembali.
 
-## E. Hasil Pengujian Modul Raft
+#### E. Hasil Pengujian Modul Raft
 
 Pada simulasi menggunakan modul Python, Node 1 terpilih menjadi leader pada term 1, sedangkan Node 2 dan Node 3 menjadi follower. Leader menambahkan perintah `command-5`, `command-10`, dan `command-15`. Pada akhir simulasi, panjang log Node 1 menjadi 3, sedangkan panjang log Node 2 dan Node 3 tetap 0.
 
