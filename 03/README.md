@@ -29,17 +29,13 @@ Tujuan praktikum ini adalah:
 │   ├── 02-kode-vector-clock-2.png
 │   ├── 02-kode-vector-clock-3.png
 │   ├── 03-hasil-vector-clock.png
-│   ├── 03b-kode-modul-vector-clock.png
-│   ├── 03c-hasil-modul-vector-clock.png
 │   ├── 04-kode-multithreaded.png
 │   ├── 05-hasil-multithreaded.png
-│   ├── 05b-hasil-multithreaded-2.png
 │   ├── 06-kode-race-condition.png
 │   ├── 07-hasil-race-condition.png
 │   ├── 08-kode-race-condition-02.png
 │   ├── 09-hasil-race-condition-02.png
 │   ├── 10-kode-deadlock-01.png
-│   ├── 11-hasil-deadlock-01.png
 │   ├── 12-kode-deadlock-02-1.png
 │   ├── 13-kode-deadlock-02-2.png
 │   ├── 14-hasil-deadlock-02.png
@@ -47,6 +43,12 @@ Tujuan praktikum ini adalah:
 │   ├── 16-kode-raft-2.png
 │   ├── 17-kode-raft-3.png
 │   ├── 18-kode-raft-4.png
+│   ├── 19-kode-raft-module-1.png
+│   ├── 20-kode-raft-module-2.png
+│   ├── 21-kode-raft-module-3.png
+│   ├── 22-kode-raft-simulation-1.png
+│   ├── 23--hasil-raft-module-1.png
+│   ├── 24-hasil-raft-module-2.png
 │   ├── hasil-raft-1.png
 │   ├── hasil-raft-2.png
 │   ├── hasil-raft-3.png
@@ -215,10 +217,6 @@ A concurrent dengan B: False
 
 Sebelum ada pesan, kedua proses concurrent karena vektornya [1,0] dan [0,1] tidak saling mendahului. Setelah P0 mengirim pesan, P1 menggabungkan vektor kiriman ([2,0]) dengan vektornya sendiri lalu menambah slot-nya, sehingga menjadi [2,2]. Sejak itu P0 mendahului P1.
 
-![Kode Modul Vector Clock](images/03b-kode-modul-vector-clock.png)
-
-![Hasil Modul Vector Clock](images/03c-hasil-modul-vector-clock.png)
-
 ### 3.3 Problem Without Synchronization
 
 #### A. Multithreading
@@ -230,8 +228,6 @@ Hasil pengujian menunjukkan bahwa urutan thread mulai dan selesai dapat berbeda 
 ![Kode Multithreading](images/04-kode-multithreaded.png)
 
 ![Hasil Multithreading Percobaan 1](images/05-hasil-multithreaded.png)
-
-![Hasil Multithreading Percobaan 2](images/05b-hasil-multithreaded-2.png)
 
 #### B. Race Condition
 
@@ -277,8 +273,6 @@ Deadlock ini terjadi karena empat kondisi terpenuhi sekaligus: *mutual exclusion
 Pada program `deadlock-02.py`, lock dilepaskan sebelum thread mencoba mengambil lock berikutnya. Program juga menggunakan batas waktu saat mengambil lock (`timeout=5`). Hasil pengujian menunjukkan bahwa kedua thread dapat memperoleh lock secara bergantian dan program menampilkan `Execution Finished`. Deadlock tidak terjadi karena tidak ada thread yang memegang satu lock sambil menunggu lock lainnya (tidak ada *hold and wait* maupun *circular wait*), dan batas waktu mencegah thread menunggu selamanya.
 
 ![Kode Deadlock](images/10-kode-deadlock-01.png)
-
-![Hasil Deadlock](images/11-hasil-deadlock-01.png)
 
 ![Kode Deadlock yang Diperbaiki Bagian 1](images/12-kode-deadlock-02-1.png)
 
@@ -338,9 +332,21 @@ Hasil pengujian memperlihatkan gambaran dasar proses pemilihan leader dan peruba
 
 Pada tahap ini, class `State` dan `RaftNode` dipisahkan ke dalam file `raft_module.py`. Selanjutnya, file `raft_simulation.py` dibuat untuk mengimpor modul tersebut dan menjalankan simulasi selama 20 langkah. Pemisahan ini membuat kode class dan kode simulasi berada pada file yang berbeda sehingga lebih mudah dibaca dan digunakan kembali.
 
+![Kode Raft Module Bagian 1](images/19-kode-raft-module-1.png)
+
+![Kode Raft Module Bagian 2](images/20-kode-raft-module-2.png)
+
+![Kode Raft Module Bagian 3](images/21-kode-raft-module-3.png)
+
+![Kode Raft Simulation](images/22-kode-raft-simulation-1.png)
+
 #### E. Hasil Pengujian Modul Raft
 
 Pada simulasi menggunakan modul Python, Node 1 terpilih menjadi leader pada term 1, sedangkan Node 2 dan Node 3 menjadi follower. Leader menambahkan perintah `command-5`, `command-10`, dan `command-15`. Pada akhir simulasi, panjang log Node 1 menjadi 3, sedangkan panjang log Node 2 dan Node 3 tetap 0.
+
+![Hasil Raft Module Bagian 1](images/23--hasil-raft-module-1.png)
+
+![Hasil Raft Module Bagian 2](images/24-hasil-raft-module-2.png)
 
 #### F. Pembahasan Modul Raft
 
