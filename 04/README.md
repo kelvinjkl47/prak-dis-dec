@@ -158,3 +158,72 @@ Hasil pengujian menunjukkan bahwa node2 dan node3 dapat membaca 412 baris data i
 1. Apache Software Foundation. (n.d.). *Apache Ignite 3 Documentation*. https://ignite.apache.org/docs/ignite3/latest/
 2. Docker, Inc. (n.d.). *Docker Compose Documentation*. https://docs.docker.com/compose/
 3. Universitas Teknologi Digital Indonesia. (n.d.). *Konsistensi dan Replikasi pada Sistem Terdistribusi*. Modul Praktikum Sistem Terdistribusi dan Terdesentralisasi.
+## Dokumentasi Screenshot Praktikum
+
+### Persiapan Lingkungan
+
+![01 - Virtualisasi](images/01-virtualisasi.png)
+
+![02 - Instalasi WSL](images/02-wsl-install.png)
+
+![03 - Docker Desktop](images/03-docker-desktop.png)
+
+![04 - Versi Docker](images/04-docker-versi.png)
+
+![05 - Hello World](images/05-hello-world.png)
+
+### Konfigurasi dan Replikasi PostgreSQL
+
+![06 - Struktur File](images/06-file-struktur.png)
+
+![06c - Konfigurasi Compose](images/06c-compose-config.png)
+
+![06g - Perbaikan Replica](images/06g-replica-diperbaiki.png)
+
+![07 - Compose Up](images/07-compose-up.png)
+
+![08 - Docker PS](images/08-docker-ps.png)
+
+![09 - Log Replica](images/09-log-replica.png)
+
+![10 - Status Replikasi PostgreSQL](images/10-pg-stat-replication.png)
+
+![11 - Replication Slots](images/11-pg-replication-slots.png)
+
+![12 - Replica dalam Recovery](images/12-replica-in-recovery.png)
+
+![13 - Replica Sebelum Tabel](images/13-replica-sebelum-tabel.png)
+
+![14 - Primary Sebelum Tabel](images/14-primary-sebelum-tabel.png)
+
+![15 - Membuat Tabel di Primary](images/15-primary-buat-tabel.png)
+
+![16 - Replica Sesudah Tabel](images/16-replica-sesudah-tabel.png)
+
+![17 - Replica Read Only](images/17-replica-read-only.png)
+
+![18 - Primary Down](images/18-primary-down.png)
+
+![19 - Promote Replica](images/19-replica-promote.png)
+
+![20 - Semua Container Berhenti](images/20-all-containers-stopped.png)
+
+### Pengujian Apache Ignite
+
+![21 - Inisialisasi Cluster](images/21-ignite-cluster-initialized.png)
+
+![22 - Eksekusi Schema](images/22-ignite-schema-executed.png)
+
+![23 - Memuat Data SQL](images/23-ignite-load-sql-data.png)
+
+![24 - Pembuatan Tabel Ignite](images/24-ignite-tables-created.png)
+
+![25 - Jumlah Invoice Node 2](images/25-ignite-node2-invoice-count.png)
+
+![26 - Penjualan Bulanan Node 2](images/26-ignite-node2-monthly-sales.png)
+
+![27 - Jumlah Invoice Node 3](images/27-ignite-node3-invoice-count.png)
+
+![28 - Penjualan Bulanan Node 3](images/28-ignite-node3-monthly-sales.png)
+
+![29 - Semua Node Ignite Berhenti](images/29-ignite-all-nodes-stopped.png)
